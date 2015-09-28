@@ -28,7 +28,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-    private SQLiteDatabase db;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -40,9 +39,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 KEY_WINS + " INTEGER, " +
                 KEY_LOSES + " INTEGER)";
         db.execSQL(CREATE_DECKS_TABLE);
-
-
-        this.db = db;
 
     }
 

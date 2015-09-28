@@ -1,6 +1,7 @@
 package com.hswinratetracker.models;
 
 public class Deck {
+
     public enum HeroClasses
     {
         MAGE("Mage"),
