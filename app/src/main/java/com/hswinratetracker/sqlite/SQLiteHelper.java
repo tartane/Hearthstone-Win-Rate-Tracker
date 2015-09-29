@@ -92,7 +92,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 decks.add(new Deck(
                                 cursor.getLong(0),
                                 cursor.getString(1),
-                                Deck.HeroClasses.valueOf(cursor.getString(2)),
+                                Deck.HeroClasses.fromString(cursor.getString(2)),
                                 cursor.getInt(3),
                                 cursor.getInt(4)
                             ));

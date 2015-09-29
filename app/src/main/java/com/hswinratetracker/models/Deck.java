@@ -25,6 +25,15 @@ public class Deck {
             return text;
         }
 
+        public static HeroClasses fromString(String value) {
+            for (HeroClasses heroClass : values()) {
+                if (heroClass.text.equals(value)) {
+                    return heroClass;
+                }
+            }
+            return null;
+        }
+
     };
 
     private Long DeckId;

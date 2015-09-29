@@ -112,10 +112,14 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                     @Override
                     public void onClick(View v) {
                         SQLiteHelper db = new SQLiteHelper(getActivity());
-                        Deck addedDeck = db.addDeck(edtDeckName.getText().toString(), (Deck.HeroClasses)imgChooseClass.getTag(), nbpWins.getValue(), nbpLoses.getValue());
+                        //Deck addedDeck = db.addDeck(edtDeckName.getText().toString(), (Deck.HeroClasses)imgChooseClass.getTag(), nbpWins.getValue(), nbpLoses.getValue());
+                        Deck addedDeck = db.addDeck(edtDeckName.getText().toString(), Deck.HeroClasses.MAGE, nbpWins.getValue(), nbpLoses.getValue());
                         db.close();
-                        deckAdapter.addItem(addedDeck );
+                        deckAdapter.addItem(addedDeck);
 
+                        recyclerView.setVisibility(View.VISIBLE);
+                        txtNoDeck.setVisibility(View.GONE);
+                        dialog.dismiss();
 
                     }
                 });
