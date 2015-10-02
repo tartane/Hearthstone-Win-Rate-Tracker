@@ -17,8 +17,8 @@
                 android:id="@+id/imgChooseClass"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
 
             <EditText
                 android:id="@+id/edtDeckName"
@@ -29,6 +29,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/imgChooseClass"
                 android:orientation="horizontal">
 
                     <TextView
