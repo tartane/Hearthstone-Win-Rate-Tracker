@@ -5,6 +5,13 @@
     android:background="#000"
     android:layout_height="100dp">
 
+    <com.hswinratetracker.CropImageView
+        android:id="@+id/imgClassBanner"
+        android:src="@drawable/ic_class_druid_banner"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <TextView
         android:id="@+id/txtClassName"
         android:layout_width="wrap_content"
@@ -15,11 +22,6 @@
         android:textColor="#fff"
         tools:text="Druid"/>
 
-    <com.hswinratetracker.CropImageView
-        android:id="@+id/imgClassBanner"
-        android:src="@drawable/ic_class_druid_banner"
-        android:scaleType="centerCrop"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
 
 </RelativeLayout>

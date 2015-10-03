@@ -16,6 +16,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.hswinratetracker.adapters.DeckAdapter;
+import com.hswinratetracker.dialogfragments.ClassPickerDialog;
 import com.hswinratetracker.models.Deck;
 import com.hswinratetracker.sqlite.SQLiteHelper;
 
@@ -108,6 +109,19 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                 nbpWins.setWrapSelectorWheel(true);
                 nbpLoses.setWrapSelectorWheel(true);
 
+                imgChooseClass.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ClassPickerDialog dialogFragment = new ClassPickerDialog();
+                        dialogFragment.setOnResultListener(new ClassPickerDialog.ResultListener() {
+                            @Override
+                            public void heroSelected(Deck.HeroClasses heroClass) {
+
+                            }
+                        });
+                        dialogFragment.show(getFragmentManager(), "pref_fragment");
+                    }
+                });
                 btnAdd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
