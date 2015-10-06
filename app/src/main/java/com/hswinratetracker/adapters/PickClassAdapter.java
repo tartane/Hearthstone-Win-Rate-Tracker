@@ -55,37 +55,7 @@ public class PickClassAdapter extends BaseAdapter {
 
         holder.txtClassName.setText(heroClass.toString());
         holder.imgClassBanner.setOffset(1, 0); //right crop
-
-        switch(heroClass)
-        {
-            case DRUID:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_druid_banner);
-                break;
-            case HUNTER:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_hunter_banner);
-                break;
-            case MAGE:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_mage_banner);
-                break;
-            case PALADIN:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_paladin_banner);
-                break;
-            case PRIEST:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_priest_banner);
-                break;
-            case ROGUE:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_rogue_banner);
-                break;
-            case SHAMAN:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_shaman_banner);
-                break;
-            case WARLOCK:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_warlock_banner);
-                break;
-            case WARRIOR:
-                holder.imgClassBanner.setImageResource(R.drawable.ic_class_warrior_banner);
-                break;
-        }
+        holder.imgClassBanner.setImageResource(heroClass.getBannerId());
 
         return vi;
     }

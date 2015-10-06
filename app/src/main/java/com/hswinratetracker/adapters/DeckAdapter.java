@@ -1,6 +1,7 @@
 package com.hswinratetracker.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.hswinratetracker.App;
 import com.hswinratetracker.models.Deck;
+import com.hswinratetracker.widgets.FontText;
 
 import java.util.ArrayList;
 
@@ -46,39 +48,14 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final ViewHolder deckViewHolder = (ViewHolder) viewHolder;
         final Deck deck = getItem(position);
 
-        Drawable drawableClass = null;
-        switch(deck.getHeroClass())
-        {
-            case DRUID:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_druid);
-                break;
-            case HUNTER:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_hunter);
-                break;
-            case MAGE:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_mage);
-                break;
-            case PALADIN:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_paladin);
-                break;
-            case PRIEST:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_priest);
-                break;
-            case ROGUE:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_rogue);
-                break;
-            case SHAMAN:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_shaman);
-                break;
-            case WARLOCK:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_warlock);
-                break;
-            case WARRIOR:
-                drawableClass = ContextCompat.getDrawable(App.getContext(), R.drawable.ic_class_warrior);
-                break;
-        }
+        deckViewHolder.imgClass.setImageResource(deck.getHeroClass().getBannerId());
+        deckViewHolder.viewClassColor.setBackgroundColor(deck.getHeroClass().getClassColor());
+        Typeface tf = Typeface.createFromAsset(App.getContext().getAssets(),
+                "fonts/OPTIBelwe-Medium.otf");
+        deckViewHolder.txtDeckName.setTypeface(tf);
+        deckViewHolder.txtWins.setTypeface(tf);
+        deckViewHolder.txtLoses.setTypeface(tf);
 
-        deckViewHolder.imgClass.setImageDrawable(drawableClass);
         deckViewHolder.txtDeckName.setText(deck.getName());
         deckViewHolder.txtWins.setText(String.valueOf(deck.getWins()));
         deckViewHolder.txtLoses.setText(String.valueOf(deck.getLoses()));
@@ -123,13 +100,16 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ImageView imgClass;
 
         @Bind(R.id.txtDeckName)
-        TextView txtDeckName;
+        FontText txtDeckName;
 
         @Bind(R.id.txtWins)
         TextView txtWins;
 
         @Bind(R.id.txtLoses)
         TextView txtLoses;
+
+        @Bind(R.id.viewClassColor)
+        View viewClassColor;
 
 
         public ViewHolder(View itemView) {

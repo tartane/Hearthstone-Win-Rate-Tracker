@@ -1,42 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:background="#000"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="120dp">
 
-        <ImageView
-            android:id="@+id/imgClass"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_class_priest"/>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp">
-                <TextView
-                    android:id="@+id/txtDeckName"
-                    android:textSize="25sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Dragon priest"/>
+    <View
+        android:id="@+id/viewClassColor"
+        android:layout_width="10dp"
+        android:background="@color/orange"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true">
 
-                <TextView
-                    android:id="@+id/txtWins"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/txtDeckName"
-                    tools:text="15"/>
+    </View>
+    <RelativeLayout
+        android:layout_toRightOf="@id/viewClassColor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/txtLoses"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/txtDeckName"
-                    tools:text="2"/>
+            <com.hswinratetracker.CropImageView
+                android:id="@+id/imgClassBanner"
+                android:src="@drawable/ic_class_druid_banner"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-        </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="#80000000"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true">
 
+            </View>
 
-</LinearLayout>
+            <com.hswinratetracker.widgets.FontText
+                android:id="@+id/txtDeckName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:paddingLeft="15dp"
+                tools:text="One shot druid"
+                custom:typefaceAsset="fonts/OPTIBelwe-Medium.otf"/>
+
+            <TextView
+                android:id="@+id/txtWins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtDeckName"
+                tools:text="15"/>
+
+            <TextView
+                android:id="@+id/txtLoses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtDeckName"
+                tools:text="2"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

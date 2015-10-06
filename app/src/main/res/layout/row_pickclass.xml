@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#000"
-    android:layout_height="100dp">
+    android:layout_height="120dp">
 
     <com.hswinratetracker.CropImageView
         android:id="@+id/imgClassBanner"

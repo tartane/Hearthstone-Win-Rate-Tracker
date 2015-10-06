@@ -1,5 +1,9 @@
 package com.hswinratetracker.models;
 
+import android.content.res.Resources;
+
+import hswinratetracker.com.hswinratetracker.R;
+
 public class Deck {
 
     public enum HeroClasses
@@ -15,9 +19,53 @@ public class Deck {
         SHAMAN("Shaman");
 
         private final String text;
-
+        private final int classColor;
+        private final int classBanner;
         private HeroClasses(final String text) {
             this.text = text;
+            switch (this)
+            {
+                case DRUID:
+                    classBanner =  R.drawable.ic_class_druid_banner;
+                    classColor = R.color.orange;
+                    break;
+                case HUNTER:
+                    classBanner =  R.drawable.ic_class_hunter_banner;
+                    classColor = R.color.green;
+                    break;
+                case MAGE:
+                    classBanner =  R.drawable.ic_class_mage_banner;
+                    classColor = R.color.lightblue;
+                    break;
+                case PALADIN:
+                    classBanner =  R.drawable.ic_class_paladin_banner;
+                    classColor = R.color.lightyellow;
+                    break;
+                case PRIEST:
+                    classBanner =  R.drawable.ic_class_priest_banner;
+                    classColor = R.color.white;
+                    break;
+                case ROGUE:
+                    classBanner =  R.drawable.ic_class_rogue_banner;
+                    classColor = R.color.pink;
+                    break;
+                case SHAMAN:
+                    classBanner =  R.drawable.ic_class_shaman_banner;
+                    classColor = R.color.blue;
+                    break;
+                case WARLOCK:
+                    classBanner =  R.drawable.ic_class_warlock_banner;
+                    classColor = R.color.purple;
+                    break;
+                case WARRIOR:
+                    classBanner =  R.drawable.ic_class_warrior_banner;
+                    classColor = R.color.tan;
+                    break;
+                default:
+                    classBanner = 0;
+                    classColor = 0;
+                    break;
+            }
         }
 
         @Override
@@ -32,6 +80,16 @@ public class Deck {
                 }
             }
             return null;
+        }
+
+        public int getBannerId()
+        {
+            return classBanner;
+        }
+
+        public int getClassColor()
+        {
+            return classColor;
         }
 
     };
