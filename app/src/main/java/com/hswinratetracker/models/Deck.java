@@ -19,53 +19,8 @@ public class Deck {
         SHAMAN("Shaman");
 
         private final String text;
-        private final int classColor;
-        private final int classBanner;
         private HeroClasses(final String text) {
             this.text = text;
-            switch (this)
-            {
-                case DRUID:
-                    classBanner =  R.drawable.ic_class_druid_banner;
-                    classColor = R.color.orange;
-                    break;
-                case HUNTER:
-                    classBanner =  R.drawable.ic_class_hunter_banner;
-                    classColor = R.color.green;
-                    break;
-                case MAGE:
-                    classBanner =  R.drawable.ic_class_mage_banner;
-                    classColor = R.color.lightblue;
-                    break;
-                case PALADIN:
-                    classBanner =  R.drawable.ic_class_paladin_banner;
-                    classColor = R.color.lightyellow;
-                    break;
-                case PRIEST:
-                    classBanner =  R.drawable.ic_class_priest_banner;
-                    classColor = R.color.white;
-                    break;
-                case ROGUE:
-                    classBanner =  R.drawable.ic_class_rogue_banner;
-                    classColor = R.color.pink;
-                    break;
-                case SHAMAN:
-                    classBanner =  R.drawable.ic_class_shaman_banner;
-                    classColor = R.color.blue;
-                    break;
-                case WARLOCK:
-                    classBanner =  R.drawable.ic_class_warlock_banner;
-                    classColor = R.color.purple;
-                    break;
-                case WARRIOR:
-                    classBanner =  R.drawable.ic_class_warrior_banner;
-                    classColor = R.color.tan;
-                    break;
-                default:
-                    classBanner = 0;
-                    classColor = 0;
-                    break;
-            }
         }
 
         @Override
@@ -84,12 +39,58 @@ public class Deck {
 
         public int getBannerId()
         {
-            return classBanner;
+            switch (this)
+            {
+                case DRUID:
+                    return R.drawable.ic_class_druid_banner;
+                case HUNTER:
+                    return R.drawable.ic_class_hunter_banner;
+                case MAGE:
+                    return R.drawable.ic_class_mage_banner;
+                case PALADIN:
+                    return R.drawable.ic_class_paladin_banner;
+                case PRIEST:
+                    return R.drawable.ic_class_priest_banner;
+                case ROGUE:
+                    return R.drawable.ic_class_rogue_banner;
+                case SHAMAN:
+                    return R.drawable.ic_class_shaman_banner;
+                case WARLOCK:
+                    return R.drawable.ic_class_warlock_banner;
+                case WARRIOR:
+                    return R.drawable.ic_class_warrior_banner;
+                default:
+                    return 0;
+            }
+
+
         }
 
         public int getClassColor()
         {
-            return classColor;
+            switch (this)
+            {
+                case DRUID:
+                    return R.color.orange;
+                case HUNTER:
+                    return R.color.green;
+                case MAGE:
+                    return R.color.lightblue;
+                case PALADIN:
+                    return R.color.lightyellow;
+                case PRIEST:
+                    return R.color.white;
+                case ROGUE:
+                    return R.color.pink;
+                case SHAMAN:
+                    return R.color.blue;
+                case WARLOCK:
+                    return R.color.purple;
+                case WARRIOR:
+                    return R.color.tan;
+                default:
+                    return 0;
+            }
         }
 
     };

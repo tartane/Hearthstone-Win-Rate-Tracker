@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hswinratetracker.App;
+import com.hswinratetracker.CropImageView;
 import com.hswinratetracker.models.Deck;
 import com.hswinratetracker.widgets.FontText;
 
@@ -48,13 +49,9 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final ViewHolder deckViewHolder = (ViewHolder) viewHolder;
         final Deck deck = getItem(position);
 
-        deckViewHolder.imgClass.setImageResource(deck.getHeroClass().getBannerId());
+        deckViewHolder.imgClassBanner.setOffset(1, 0); //right crop
+        deckViewHolder.imgClassBanner.setImageResource(deck.getHeroClass().getBannerId());
         deckViewHolder.viewClassColor.setBackgroundColor(deck.getHeroClass().getClassColor());
-        Typeface tf = Typeface.createFromAsset(App.getContext().getAssets(),
-                "fonts/OPTIBelwe-Medium.otf");
-        deckViewHolder.txtDeckName.setTypeface(tf);
-        deckViewHolder.txtWins.setTypeface(tf);
-        deckViewHolder.txtLoses.setTypeface(tf);
 
         deckViewHolder.txtDeckName.setText(deck.getName());
         deckViewHolder.txtWins.setText(String.valueOf(deck.getWins()));
@@ -96,8 +93,8 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         View itemView;
 
-        @Bind(R.id.imgClass)
-        ImageView imgClass;
+        @Bind(R.id.imgClassBanner)
+        CropImageView imgClassBanner;
 
         @Bind(R.id.txtDeckName)
         FontText txtDeckName;
