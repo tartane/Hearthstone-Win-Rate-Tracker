@@ -1,10 +1,29 @@
 package com.hswinratetracker.models;
 
-import android.content.res.Resources;
-
+import java.util.Date;
 import hswinratetracker.com.hswinratetracker.R;
 
 public class Deck {
+    private long DeckId;
+    private String Name;
+    private HeroClasses HeroClass;
+    private int Wins;
+    private int Loses;
+    private Date DateCreated;
+    private Date DateUpdated;
+
+    public Deck() {
+    }
+
+    public Deck(long deckId, String name, HeroClasses heroClass, int wins, int loses, Date dateCreated, Date dateUpdated) {
+        DeckId = deckId;
+        Name = name;
+        HeroClass = heroClass;
+        Wins = wins;
+        Loses = loses;
+        DateCreated = dateCreated;
+        DateUpdated = dateUpdated;
+    }
 
     public enum HeroClasses
     {
@@ -95,26 +114,27 @@ public class Deck {
 
     };
 
-    private Long DeckId;
-    private String Name;
-    private HeroClasses HeroClass;
-    private int Wins;
-    private int Loses;
-    private Double WinRate;
-
-    public Deck(Long deckId, String name, HeroClasses heroClass, int wins, int loses) {
-        DeckId = deckId;
-        Name = name;
-        HeroClass = heroClass;
-        Wins = wins;
-        Loses = loses;
+    public Date getDateCreated() {
+        return DateCreated;
     }
 
-    public Long getDeckId() {
+    public void setDateCreated(Date dateCreated) {
+        DateCreated = dateCreated;
+    }
+
+    public Date getDateUpdated() {
+        return DateUpdated;
+    }
+
+    public void setDateUpdated(Date dateUpdated) {
+        DateUpdated = dateUpdated;
+    }
+
+    public long getDeckId() {
         return DeckId;
     }
 
-    public void setDeckId(Long deckId) {
+    public void setDeckId(long deckId) {
         DeckId = deckId;
     }
 
@@ -150,11 +170,5 @@ public class Deck {
         Loses = loses;
     }
 
-    public Double getWinRate() {
-        return WinRate;
-    }
 
-    public void setWinRate(Double winRate) {
-        WinRate = winRate;
-    }
 }

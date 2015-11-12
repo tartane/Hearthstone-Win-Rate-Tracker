@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.hswinratetracker.models.Deck;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
@@ -23,8 +24,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String KEY_HEROCLASS = "HeroClass";
     private static final String KEY_WINS = "Wins";
     private static final String KEY_LOSES = "Loses";
+    private static final String KEY_DATECREATED = "DateCreated";
+    private static final String KEY_DATEUPDATED = "DateUpdated";
 
-    private static final String[] DECKS_COLUMNS = {KEY_DECKID, KEY_NAME, KEY_HEROCLASS, KEY_WINS, KEY_LOSES};
+    private static final String[] DECKS_COLUMNS = {KEY_DECKID, KEY_NAME, KEY_HEROCLASS, KEY_WINS, KEY_LOSES, KEY_DATECREATED, KEY_DATEUPDATED};
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -37,7 +40,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 KEY_NAME + " TEXT, "+
                 KEY_HEROCLASS + " TEXT, "+
                 KEY_WINS + " INTEGER, " +
-                KEY_LOSES + " INTEGER)";
+                KEY_LOSES + " INTEGER, " +
+                KEY_DATECREATED + " INTEGER, " + //Date stored as milliseconds
+                KEY_DATEUPDATED + " INTEGER)"; //Date stored as milliseconds
         db.execSQL(CREATE_DECKS_TABLE);
 
     }
@@ -55,12 +60,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         values.put(KEY_HEROCLASS, heroClass.toString());
         values.put(KEY_WINS, wins);
         values.put(KEY_LOSES, loses);
-
-        Long deckId = db.insert(TABLE_DECKS,
+        Date dateCreated = new Date();
+        values.put(KEY_DATECREATED, dateCreated.getTime()); //today
+        values.putNull(KEY_DATEUPDATED);//never updated
+        long deckId = db.insert(TABLE_DECKS,
                         null, //nullColumnHack
                         values);
 
-        return new Deck(deckId, name, heroClass, wins, loses);
+        return new Deck(deckId, name, heroClass, wins, loses, dateCreated, null);
     }
 
     public void removeDeck(int deckId)
@@ -69,6 +76,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.delete(TABLE_DECKS, KEY_DECKID + " = ?", new String[]{String.valueOf(deckId)});
     }
 
+    public void getDeck(int deckId)
+    {
+
+
+    }
     public ArrayList<Deck> getDecks()
     {
         ArrayList<Deck> decks = new ArrayList<Deck>();
@@ -89,13 +101,18 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
             for(int i = 0; i < cursor.getCount(); i++)
             {
-                decks.add(new Deck(
-                                cursor.getLong(0),
-                                cursor.getString(1),
-                                Deck.HeroClasses.fromString(cursor.getString(2)),
-                                cursor.getInt(3),
-                                cursor.getInt(4)
-                            ));
+                Deck deck = new Deck();
+                deck.setDeckId(cursor.getLong(0));
+                deck.setName(cursor.getString(1));
+                deck.setHeroClass(Deck.HeroClasses.fromString(cursor.getString(2)));
+                deck.setWins(cursor.getInt(3));
+                deck.setLoses(cursor.getInt(4));
+                deck.setDateCreated(new Date(cursor.getLong(5)));
+                if(!cursor.isNull(6))
+                {
+                    deck.setDateUpdated(new Date(cursor.getLong(6)));
+                }
+                decks.add(deck);
                 cursor.moveToNext();
             }
             cursor.close();
