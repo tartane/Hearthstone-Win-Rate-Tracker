@@ -85,6 +85,34 @@ public class Deck {
 
         }
 
+        public int getIconId()
+        {
+            switch (this)
+            {
+                case DRUID:
+                    return R.drawable.ic_class_druid;
+                case HUNTER:
+                    return R.drawable.ic_class_hunter;
+                case MAGE:
+                    return R.drawable.ic_class_mage;
+                case PALADIN:
+                    return R.drawable.ic_class_paladin;
+                case PRIEST:
+                    return R.drawable.ic_class_priest;
+                case ROGUE:
+                    return R.drawable.ic_class_rogue;
+                case SHAMAN:
+                    return R.drawable.ic_class_shaman;
+                case WARLOCK:
+                    return R.drawable.ic_class_warlock;
+                case WARRIOR:
+                    return R.drawable.ic_class_warrior;
+                default:
+                    return 0;
+            }
+        }
+
+
         public int getClassColor()
         {
             switch (this)
@@ -107,9 +135,9 @@ public class Deck {
                     return R.color.purple;
                 case WARRIOR:
                     return R.color.tan;
-                default:
-                    return 0;
             }
+
+            return 0;
         }
 
     };

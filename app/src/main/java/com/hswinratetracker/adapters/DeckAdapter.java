@@ -15,6 +15,7 @@ import com.hswinratetracker.App;
 import com.hswinratetracker.CropImageView;
 import com.hswinratetracker.models.Deck;
 import com.hswinratetracker.widgets.FontText;
+import com.ivankocijan.magicviews.views.MagicTextView;
 
 import java.util.ArrayList;
 
@@ -25,12 +26,13 @@ import hswinratetracker.com.hswinratetracker.R;
 public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private DeckAdapter.OnItemClickListener mItemClickListener;
     private ArrayList<Deck> mItems = new ArrayList<>();
-
+    private Context context;
     public interface OnItemClickListener {
         public void onItemClick(View v, Deck item, int position);
     }
 
     public DeckAdapter(Context context, ArrayList<Deck> items) {
+        this.context = context;
         setItems(items);
     }
 
@@ -51,11 +53,23 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         deckViewHolder.imgClassBanner.setOffset(1, 0); //right crop
         deckViewHolder.imgClassBanner.setImageResource(deck.getHeroClass().getBannerId());
-        deckViewHolder.viewClassColor.setBackgroundColor(deck.getHeroClass().getClassColor());
+        deckViewHolder.viewClassColor.setBackgroundColor(ContextCompat.getColor(context, deck.getHeroClass().getClassColor()));
 
         deckViewHolder.txtDeckName.setText(deck.getName());
         deckViewHolder.txtWins.setText(String.valueOf(deck.getWins()));
         deckViewHolder.txtLoses.setText(String.valueOf(deck.getLoses()));
+        //calculate win percentage
+        int totalGames = deck.getWins() + deck.getLoses();
+        if(totalGames > 0) {
+            double winRatio = ((double)deck.getWins()) / totalGames;
+            int winPercentage = (int)Math.round(winRatio * 100);
+            deckViewHolder.txtWinRate.setText(String.valueOf(winPercentage) + "%");
+        }
+        else {
+            //no game played yet
+            deckViewHolder.txtWinRate.setText("n/a");
+        }
+
     }
 
     @Override
@@ -97,13 +111,16 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         CropImageView imgClassBanner;
 
         @Bind(R.id.txtDeckName)
-        FontText txtDeckName;
+        MagicTextView txtDeckName;
 
         @Bind(R.id.txtWins)
         TextView txtWins;
 
         @Bind(R.id.txtLoses)
         TextView txtLoses;
+
+        @Bind(R.id.txtWinRate)
+        TextView txtWinRate;
 
         @Bind(R.id.viewClassColor)
         View viewClassColor;

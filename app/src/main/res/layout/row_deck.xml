@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#000"
     android:layout_width="match_parent"
     android:layout_height="120dp">
@@ -34,12 +34,13 @@
 
             </View>
 
-            <com.hswinratetracker.widgets.FontText
+            <com.ivankocijan.magicviews.views.MagicTextView
                 android:id="@+id/txtDeckName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:paddingLeft="15dp"
+                app:typeFace="OPTIBelwe-Medium.otf"
                 tools:text="One shot druid" />
 
             <TextView
@@ -55,6 +56,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtDeckName"
                 tools:text="2"/>
+
+            <com.ivankocijan.magicviews.views.MagicTextView
+                android:id="@+id/txtWinRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="35sp"
+                android:padding="25dp"
+                app:typeFace="OPTIBelwe-Medium.otf"
+                tools:text="75%" />
 
     </RelativeLayout>
 

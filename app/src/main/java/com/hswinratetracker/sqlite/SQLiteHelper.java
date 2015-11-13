@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "DeckDB";
 
     private static final String TABLE_DECKS = "decks";
@@ -48,8 +48,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DECKS);
+        this.onCreate(db);
     }
 
     public Deck addDeck(String name, Deck.HeroClasses heroClass, int wins, int loses){

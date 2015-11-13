@@ -48,9 +48,7 @@ public class ClassPickerDialog extends DialogFragment implements AdapterView.OnI
         listViewPickClass.setOnItemClickListener(this);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        builder
-                .setView(view)
-                .setTitle(getString(R.string.dialog_class_picker_title));
+        builder.setView(view);
 
         return builder.create();
     }
@@ -65,6 +63,6 @@ public class ClassPickerDialog extends DialogFragment implements AdapterView.OnI
     }
 
     public interface ResultListener {
-        public void heroSelected(Deck.HeroClasses heroClass);
+        void heroSelected(Deck.HeroClasses heroClass);
     }
 }
