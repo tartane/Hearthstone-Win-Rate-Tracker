@@ -16,6 +16,8 @@ import com.hswinratetracker.CropImageView;
 import com.hswinratetracker.models.Deck;
 import com.hswinratetracker.widgets.FontText;
 import com.ivankocijan.magicviews.views.MagicTextView;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -51,10 +53,9 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final ViewHolder deckViewHolder = (ViewHolder) viewHolder;
         final Deck deck = getItem(position);
 
-        deckViewHolder.imgClassBanner.setOffset(1, 0); //right crop
+        //deckViewHolder.imgClassBanner.setOffset(1, 0); //right crop
         deckViewHolder.imgClassBanner.setImageResource(deck.getHeroClass().getBannerId());
         deckViewHolder.viewClassColor.setBackgroundColor(ContextCompat.getColor(context, deck.getHeroClass().getClassColor()));
-
         deckViewHolder.txtDeckName.setText(deck.getName());
         deckViewHolder.txtWins.setText(String.valueOf(deck.getWins()));
         deckViewHolder.txtLoses.setText(String.valueOf(deck.getLoses()));
@@ -69,7 +70,6 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             //no game played yet
             deckViewHolder.txtWinRate.setText("n/a");
         }
-
     }
 
     @Override
@@ -108,7 +108,7 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         View itemView;
 
         @Bind(R.id.imgClassBanner)
-        CropImageView imgClassBanner;
+        ImageView imgClassBanner;
 
         @Bind(R.id.txtDeckName)
         MagicTextView txtDeckName;
@@ -141,6 +141,5 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 mItemClickListener.onItemClick(view, item, position);
             }
         }
-
     }
 }

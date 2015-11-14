@@ -124,11 +124,11 @@ public class Deck {
                 case MAGE:
                     return R.color.lightblue;
                 case PALADIN:
-                    return R.color.lightyellow;
+                    return R.color.pink;
                 case PRIEST:
                     return R.color.white;
                 case ROGUE:
-                    return R.color.pink;
+                    return R.color.lightyellow;
                 case SHAMAN:
                     return R.color.blue;
                 case WARLOCK:

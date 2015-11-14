@@ -14,6 +14,7 @@ import com.hswinratetracker.adapters.DeckAdapter;
 import com.hswinratetracker.decorations.DividerItemDecoration;
 import com.hswinratetracker.dialogfragments.AddDeckDialog;
 import com.hswinratetracker.dialogfragments.ClassPickerDialog;
+import com.hswinratetracker.dialogfragments.WinLoseDialog;
 import com.hswinratetracker.models.Deck;
 import com.hswinratetracker.sqlite.SQLiteHelper;
 
@@ -75,7 +76,14 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     private DeckAdapter.OnItemClickListener mOnItemClickListener = new DeckAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(final View view, final Deck deck, final int position) {
-            //TODO
+            WinLoseDialog dialogFragment = new WinLoseDialog();
+            dialogFragment.setOnResultListener(new WinLoseDialog.ResultListener() {
+                @Override
+                public void ResultSelected(Deck deck) {
+
+                }
+            });
+            dialogFragment.show(getFragmentManager(), "winlost_fragment");
 
         }
     };
@@ -96,7 +104,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                         txtNoDeck.setVisibility(View.GONE);
                     }
                 });
-                dialogFragment.show(getFragmentManager(), "pref_fragment");
+                dialogFragment.show(getFragmentManager(), "adddeck_fragment");
             break;
         }
     }

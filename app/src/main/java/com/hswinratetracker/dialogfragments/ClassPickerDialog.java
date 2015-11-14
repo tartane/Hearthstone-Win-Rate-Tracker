@@ -60,6 +60,7 @@ public class ClassPickerDialog extends DialogFragment implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         mOnResultListener.heroSelected(adapter.getItem(position));
+        getDialog().dismiss();
     }
 
     public interface ResultListener {

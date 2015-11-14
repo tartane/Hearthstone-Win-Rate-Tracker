@@ -25,14 +25,14 @@
                     android:scaleType="centerCrop"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp" />
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
 
                 <View
                     android:id="@+id/overlay"
                     android:background="#a5000000"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"></View>
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"></View>
 
                 <TextView
                     android:id="@+id/txtChooseHero"
@@ -40,6 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
+                    android:textSize="10sp"
                     android:gravity="center"
                     android:text="Touch to\n choose hero"/>
             </RelativeLayout>
@@ -47,18 +48,22 @@
 
             <EditText
                 android:id="@+id/edtDeckName"
+                android:layout_marginLeft="10dp"
+                android:hint="@string/deck_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/layChooseClass"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_below="@id/layChooseClass"
                 android:orientation="horizontal">
 
                     <TextView
                         android:text="@string/wins"
+                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -69,6 +74,7 @@
 
                     <TextView
                         android:text="@string/loses"
+                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 

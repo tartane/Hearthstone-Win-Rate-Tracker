@@ -80,7 +80,6 @@ public class CropImageView extends ImageView {
         matrix.setRectToRect(drawableRect, viewRect, Matrix.ScaleToFit.FILL);
 
         setImageMatrix(matrix);
-
         return super.setFrame(l, t, r, b);
     }
 }

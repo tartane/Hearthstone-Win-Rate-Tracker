@@ -11,4 +11,5 @@
     <string name="dialog_class_picker_title">Pick a class</string>
     <string name="deck_name_required">The deck name is required.</string>
     <string name="must_choose_hero">You must choose a hero.</string>
+    <string name="deck_name">Deck name</string>
 </resources>
