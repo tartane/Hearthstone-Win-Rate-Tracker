@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
             <RelativeLayout
+                android:id="@+id/layWin"
                 android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -25,6 +26,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/layLose"
                 android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -41,6 +43,7 @@
             </RelativeLayout>
     </LinearLayout>
     <RelativeLayout
+        android:id="@+id/layEdit"
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

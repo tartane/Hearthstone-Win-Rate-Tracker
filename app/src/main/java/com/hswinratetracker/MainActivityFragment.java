@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hswinratetracker.adapters.DeckAdapter;
 import com.hswinratetracker.decorations.DividerItemDecoration;
@@ -35,6 +36,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
     @Bind(R.id.txtNoDeck)
     TextView txtNoDeck;
+
+    final private String WIN_LOSE_TAG = "WINLOSE_FRAGMENT";
+    final private String ADDDECK_TAG = "ADDDECK_FRAGMENT";
 
     private DeckAdapter deckAdapter;
 
@@ -76,14 +80,28 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     private DeckAdapter.OnItemClickListener mOnItemClickListener = new DeckAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(final View view, final Deck deck, final int position) {
-            WinLoseDialog dialogFragment = new WinLoseDialog();
+            WinLoseDialog dialogFragment = WinLoseDialog.newInstance(deck);
             dialogFragment.setOnResultListener(new WinLoseDialog.ResultListener() {
                 @Override
-                public void ResultSelected(Deck deck) {
+                public void ResultSelected(Deck deck, boolean win) {
+                    SQLiteHelper db = new SQLiteHelper(getActivity());
+                    if(win)
+                        // yay
+                        db.addWin(deck.getDeckId());
+                    else
+                        // :(
+                        db.addLose(deck.getDeckId());
 
+                    Deck updatedDeck = db.getDeck(deck.getDeckId());
+                    
+                    if(updatedDeck != null)
+                        deckAdapter.updateItem(updatedDeck);
+                    else
+                        //lolwhat
+                        Toast.makeText(getActivity(), getString(R.string.error_updating_deck), Toast.LENGTH_LONG).show();
                 }
             });
-            dialogFragment.show(getFragmentManager(), "winlost_fragment");
+            dialogFragment.show(getFragmentManager(), WIN_LOSE_TAG);
 
         }
     };
@@ -104,7 +122,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                         txtNoDeck.setVisibility(View.GONE);
                     }
                 });
-                dialogFragment.show(getFragmentManager(), "adddeck_fragment");
+                dialogFragment.show(getFragmentManager(), ADDDECK_TAG);
             break;
         }
     }

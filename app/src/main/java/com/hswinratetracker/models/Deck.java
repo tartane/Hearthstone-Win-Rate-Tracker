@@ -1,9 +1,12 @@
 package com.hswinratetracker.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 import hswinratetracker.com.hswinratetracker.R;
 
-public class Deck {
+public class Deck implements Parcelable {
     private long DeckId;
     private String Name;
     private HeroClasses HeroClass;
@@ -15,6 +18,17 @@ public class Deck {
     public Deck() {
     }
 
+    public Deck(Parcel in)
+    {
+        DeckId = in.readLong();
+        Name = in.readString();
+        HeroClass = (HeroClasses) in.readSerializable();
+        Wins= in.readInt();
+        Loses = in.readInt();
+        DateCreated = (Date)in.readSerializable();
+        DateUpdated = (Date)in.readSerializable();
+    }
+
     public Deck(long deckId, String name, HeroClasses heroClass, int wins, int loses, Date dateCreated, Date dateUpdated) {
         DeckId = deckId;
         Name = name;
@@ -23,6 +37,22 @@ public class Deck {
         Loses = loses;
         DateCreated = dateCreated;
         DateUpdated = dateUpdated;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeLong(DeckId);
+        out.writeString(Name);
+        out.writeSerializable(HeroClass);
+        out.writeInt(Wins);
+        out.writeInt(Loses);
+        out.writeSerializable(DateCreated);
+        out.writeSerializable(DateUpdated);
     }
 
     public enum HeroClasses

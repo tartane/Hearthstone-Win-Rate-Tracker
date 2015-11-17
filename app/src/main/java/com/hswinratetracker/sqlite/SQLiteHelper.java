@@ -77,11 +77,105 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.delete(TABLE_DECKS, KEY_DECKID + " = ?", new String[]{String.valueOf(deckId)});
     }
 
-    public void getDeck(int deckId)
+    public int getWins(long deckId)
     {
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        Cursor cursor =
+                db.query(TABLE_DECKS,
+                        DECKS_COLUMNS,
+                        KEY_DECKID + " = ?", //selections
+                        new String[]{String.valueOf(deckId)} , //selections args
+                        null, //group by
+                        null, //having
+                        null, //order by
+                        null);//limit
+
+        if (cursor !=null)
+            cursor.moveToFirst();
+
+
+        return cursor.getInt(3);
+    }
+
+    public int getLoses(long deckId)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor =
+                db.query(TABLE_DECKS,
+                        DECKS_COLUMNS,
+                        KEY_DECKID + " = ?", //selections
+                        new String[]{String.valueOf(deckId)} , //selections args
+                        null, //group by
+                        null, //having
+                        null, //order by
+                        null);//limit
+
+        if (cursor !=null)
+            cursor.moveToFirst();
+
+        return cursor.getInt(4);
 
     }
+
+    public void addWin(long deckId)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int currentWins = getWins(deckId);
+        int updatedWins = currentWins + 1;
+
+        ContentValues newValues = new ContentValues();
+        newValues.put(KEY_WINS, updatedWins);
+
+        db.update(TABLE_DECKS, newValues, KEY_DECKID + " = ?", new String[]{String.valueOf(deckId)});
+    }
+
+    public void addLose(long deckId)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int currentLoses = getLoses(deckId);
+        int updatedLoses = currentLoses + 1;
+
+        ContentValues newValues = new ContentValues();
+        newValues.put(KEY_LOSES, updatedLoses);
+
+        db.update(TABLE_DECKS, newValues, KEY_DECKID + " = ?", new String[]{String.valueOf(deckId)});
+    }
+    public Deck getDeck(long deckId)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor =
+                db.query(TABLE_DECKS,
+                        DECKS_COLUMNS,
+                        KEY_DECKID + " = ?", //selections
+                        new String[]{String.valueOf(deckId)}, //selections args
+                        null, //group by
+                        null, //having
+                        null, //order by
+                        null);//limit
+
+        Deck deck = null;
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+            deck = new Deck();
+            deck.setDeckId(cursor.getLong(0));
+            deck.setName(cursor.getString(1));
+            deck.setHeroClass(Deck.HeroClasses.fromString(cursor.getString(2)));
+            deck.setWins(cursor.getInt(3));
+            deck.setLoses(cursor.getInt(4));
+            deck.setDateCreated(new Date(cursor.getLong(5)));
+            if(!cursor.isNull(6))
+                deck.setDateUpdated(new Date(cursor.getLong(6)));
+
+            cursor.close();
+        }
+
+        return deck;
+    }
+
     public ArrayList<Deck> getDecks()
     {
         ArrayList<Deck> decks = new ArrayList<Deck>();
@@ -110,9 +204,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 deck.setLoses(cursor.getInt(4));
                 deck.setDateCreated(new Date(cursor.getLong(5)));
                 if(!cursor.isNull(6))
-                {
                     deck.setDateUpdated(new Date(cursor.getLong(6)));
-                }
                 decks.add(deck);
                 cursor.moveToNext();
             }

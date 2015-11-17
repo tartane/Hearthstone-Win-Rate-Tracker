@@ -16,8 +16,6 @@ import com.hswinratetracker.CropImageView;
 import com.hswinratetracker.models.Deck;
 import com.hswinratetracker.widgets.FontText;
 import com.ivankocijan.magicviews.views.MagicTextView;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -96,6 +94,19 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mItems.add(deck);
 
         notifyDataSetChanged();
+    }
+
+    public void updateItem(Deck updatedDeck)
+    {
+        for (int i = 0; i < getItemCount(); i++)
+        {
+            if(mItems.get(i).getDeckId() == updatedDeck.getDeckId())
+            {
+                mItems.set(i, updatedDeck);
+                notifyDataSetChanged();
+                break;
+            }
+        }
     }
 
     public void clearItems() {
