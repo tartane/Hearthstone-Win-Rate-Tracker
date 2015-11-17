@@ -47,6 +47,9 @@ public class WinLoseDialog extends DialogFragment implements View.OnClickListene
         this.deck = getArguments().getParcelable(DECK_KEY);
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_dialog_winlose, null, false);
         ButterKnife.bind(this, view);
+        layWin.setOnClickListener(this);
+        layLose.setOnClickListener(this);
+        layEdit.setOnClickListener(this);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
         builder.setCancelable(true);
