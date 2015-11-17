@@ -46,6 +46,7 @@
 
             <TextView
                 android:id="@+id/txtWins"
+                android:layout_marginLeft="15dp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,6 +55,8 @@
 
             <TextView
                 android:id="@+id/txtLoses"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/txtWins"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

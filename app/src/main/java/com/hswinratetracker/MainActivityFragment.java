@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +32,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    @Bind(R.id.fabAdd)
-    FloatingActionButton fabAdd;
+    @Bind(R.id.layAddDeck)
+    RelativeLayout layAddDeck;
 
     @Bind(R.id.txtNoDeck)
     TextView txtNoDeck;
@@ -55,7 +56,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        fabAdd.setOnClickListener(this);
+        layAddDeck.setOnClickListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity()));
         SQLiteHelper db = new SQLiteHelper(getActivity());
@@ -110,7 +111,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch(view.getId())
         {
-            case R.id.fabAdd:
+            case R.id.layAddDeck:
                 AddDeckDialog dialogFragment = new AddDeckDialog();
                 dialogFragment.setOnResultListener(new AddDeckDialog.ResultListener() {
 
