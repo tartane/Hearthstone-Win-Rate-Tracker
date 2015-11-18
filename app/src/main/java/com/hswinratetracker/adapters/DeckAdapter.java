@@ -109,6 +109,12 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    public void removeItem(Deck deckToRemove)
+    {
+        mItems.remove(deckToRemove);
+        notifyDataSetChanged();
+    }
+
     public void clearItems() {
         mItems.clear();
         notifyDataSetChanged();

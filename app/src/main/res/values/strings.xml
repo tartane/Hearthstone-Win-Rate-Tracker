@@ -13,4 +13,9 @@
     <string name="must_choose_hero">You must choose a hero.</string>
     <string name="deck_name">Deck name</string>
     <string name="error_updating_deck">An error has occurred while updating your deck.</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

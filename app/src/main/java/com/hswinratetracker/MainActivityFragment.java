@@ -1,6 +1,5 @@
 package com.hswinratetracker;
 
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +13,7 @@ import android.widget.Toast;
 
 import com.hswinratetracker.adapters.DeckAdapter;
 import com.hswinratetracker.decorations.DividerItemDecoration;
-import com.hswinratetracker.dialogfragments.AddDeckDialog;
-import com.hswinratetracker.dialogfragments.ClassPickerDialog;
+import com.hswinratetracker.dialogfragments.ManageDeckDialog;
 import com.hswinratetracker.dialogfragments.WinLoseDialog;
 import com.hswinratetracker.models.Deck;
 import com.hswinratetracker.sqlite.SQLiteHelper;
@@ -112,8 +110,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         switch(view.getId())
         {
             case R.id.layAddDeck:
-                AddDeckDialog dialogFragment = new AddDeckDialog();
-                dialogFragment.setOnResultListener(new AddDeckDialog.ResultListener() {
+                ManageDeckDialog dialogFragment = new ManageDeckDialog();
+                dialogFragment.setOnResultListener(new ManageDeckDialog.ResultListener() {
 
                     @Override
                     public void DeckAdded(Deck deck) {
@@ -121,6 +119,16 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
                         recyclerView.setVisibility(View.VISIBLE);
                         txtNoDeck.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void DeckUpdated(Deck deck) {
+                        deckAdapter.updateItem(deck);
+                    }
+
+                    @Override
+                    public void DeckDeleted(Deck deck) {
+                        deckAdapter.removeItem(deck);
                     }
                 });
                 dialogFragment.show(getFragmentManager(), ADDDECK_TAG);

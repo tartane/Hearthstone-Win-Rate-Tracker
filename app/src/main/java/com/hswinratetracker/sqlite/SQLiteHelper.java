@@ -71,7 +71,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return new Deck(deckId, name, heroClass, wins, loses, dateCreated, null);
     }
 
-    public void removeDeck(int deckId)
+    public void removeDeck(long deckId)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_DECKS, KEY_DECKID + " = ?", new String[]{String.valueOf(deckId)});
@@ -127,7 +127,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         ContentValues newValues = new ContentValues();
         newValues.put(KEY_WINS, updatedWins);
-
+        Date dateUpdated = new Date();
+        newValues.put(KEY_DATEUPDATED, dateUpdated.getTime());//now
         db.update(TABLE_DECKS, newValues, KEY_DECKID + " = ?", new String[]{String.valueOf(deckId)});
     }
 
@@ -139,8 +140,23 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         ContentValues newValues = new ContentValues();
         newValues.put(KEY_LOSES, updatedLoses);
-
+        Date dateUpdated = new Date();
+        newValues.put(KEY_DATEUPDATED, dateUpdated.getTime());//now
         db.update(TABLE_DECKS, newValues, KEY_DECKID + " = ?", new String[]{String.valueOf(deckId)});
+    }
+    public void updateDeck(Deck updatedDeck)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues newValues = new ContentValues();
+        newValues.put(KEY_NAME, updatedDeck.getName());
+        newValues.put(KEY_HEROCLASS, updatedDeck.getHeroClass().toString());
+        newValues.put(KEY_WINS, updatedDeck.getWins());
+        newValues.put(KEY_LOSES, updatedDeck.getLoses());
+        newValues.put(KEY_DATECREATED, updatedDeck.getDateCreated().getTime());
+        Date dateUpdated = new Date();
+        newValues.put(KEY_DATEUPDATED, dateUpdated.getTime());//now
+        db.update(TABLE_DECKS, newValues, KEY_DECKID + " = ?", new String[]{String.valueOf(updatedDeck.getDeckId())});
     }
     public Deck getDeck(long deckId)
     {
