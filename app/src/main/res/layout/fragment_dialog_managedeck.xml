@@ -48,6 +48,8 @@
 
             <EditText
                 android:id="@+id/edtDeckName"
+                android:maxLength="25"
+                android:inputType="textNoSuggestions|textVisiblePassword"
                 android:layout_marginLeft="10dp"
                 android:hint="@string/deck_name"
                 android:imeOptions="actionDone"
