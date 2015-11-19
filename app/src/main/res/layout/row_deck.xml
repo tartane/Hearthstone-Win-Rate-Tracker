@@ -44,16 +44,17 @@
                 app:typeFace="OPTIBelwe-Medium.otf"
                 tools:text="One shot druid" />
 
-            <TextView
+            <com.ivankocijan.magicviews.views.MagicTextView
                 android:id="@+id/txtWins"
                 android:layout_marginLeft="15dp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtDeckName"
+                app:typeFace="OPTIBelwe-Medium.otf"
                 tools:text="15"/>
 
-            <TextView
+            <com.ivankocijan.magicviews.views.MagicTextView
                 android:id="@+id/txtLoses"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/txtWins"
@@ -61,6 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtDeckName"
+                app:typeFace="OPTIBelwe-Medium.otf"
                 tools:text="2"/>
 
             <com.ivankocijan.magicviews.views.MagicTextView

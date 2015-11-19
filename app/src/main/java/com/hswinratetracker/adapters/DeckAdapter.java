@@ -1,20 +1,13 @@
 package com.hswinratetracker.adapters;
 
 import android.content.Context;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.hswinratetracker.App;
-import com.hswinratetracker.CropImageView;
 import com.hswinratetracker.models.Deck;
-import com.hswinratetracker.widgets.FontText;
 import com.ivankocijan.magicviews.views.MagicTextView;
 
 import java.util.ArrayList;
@@ -131,13 +124,13 @@ public class DeckAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         MagicTextView txtDeckName;
 
         @Bind(R.id.txtWins)
-        TextView txtWins;
+        MagicTextView txtWins;
 
         @Bind(R.id.txtLoses)
-        TextView txtLoses;
+        MagicTextView txtLoses;
 
         @Bind(R.id.txtWinRate)
-        TextView txtWinRate;
+        MagicTextView txtWinRate;
 
         @Bind(R.id.viewClassColor)
         View viewClassColor;

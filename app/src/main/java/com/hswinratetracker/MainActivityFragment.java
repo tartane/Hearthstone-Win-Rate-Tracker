@@ -17,6 +17,7 @@ import com.hswinratetracker.dialogfragments.ManageDeckDialog;
 import com.hswinratetracker.dialogfragments.WinLoseDialog;
 import com.hswinratetracker.models.Deck;
 import com.hswinratetracker.sqlite.SQLiteHelper;
+import com.ivankocijan.magicviews.views.MagicTextView;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     RelativeLayout layAddDeck;
 
     @Bind(R.id.txtNoDeck)
-    TextView txtNoDeck;
+    MagicTextView txtNoDeck;
 
     final private String WIN_LOSE_TAG = "WINLOSE_FRAGMENT";
     final private String MANAGE_DECK_TAG = "MANAGE_DECK_FRAGMENT";
