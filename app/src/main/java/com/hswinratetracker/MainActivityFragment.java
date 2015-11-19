@@ -37,7 +37,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     TextView txtNoDeck;
 
     final private String WIN_LOSE_TAG = "WINLOSE_FRAGMENT";
-    final private String ADDDECK_TAG = "ADDDECK_FRAGMENT";
+    final private String MANAGE_DECK_TAG = "MANAGE_DECK_FRAGMENT";
 
     private DeckAdapter deckAdapter;
 
@@ -75,7 +75,25 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         recyclerView.setAdapter(deckAdapter);
 
     }
+    private ManageDeckDialog.ResultListener mOnResultListener = new ManageDeckDialog.ResultListener() {
+        @Override
+        public void DeckAdded(Deck deck) {
+            deckAdapter.addItem(deck);
 
+            recyclerView.setVisibility(View.VISIBLE);
+            txtNoDeck.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void DeckUpdated(Deck deck) {
+            deckAdapter.updateItem(deck);
+        }
+
+        @Override
+        public void DeckDeleted(Deck deck) {
+            deckAdapter.removeItem(deck);
+        }
+    };
     private DeckAdapter.OnItemClickListener mOnItemClickListener = new DeckAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(final View view, final Deck deck, final int position) {
@@ -99,6 +117,13 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                         //lolwhat
                         Toast.makeText(getActivity(), getString(R.string.error_updating_deck), Toast.LENGTH_LONG).show();
                 }
+
+                @Override
+                public void EditSelected(Deck deck) {
+                    ManageDeckDialog dialogFragment = ManageDeckDialog.newInstance(ManageDeckDialog.Mode.EDIT, deck);
+                    dialogFragment.setOnResultListener(mOnResultListener);
+                    dialogFragment.show(getFragmentManager(), MANAGE_DECK_TAG);
+                }
             });
             dialogFragment.show(getFragmentManager(), WIN_LOSE_TAG);
 
@@ -110,28 +135,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         switch(view.getId())
         {
             case R.id.layAddDeck:
-                ManageDeckDialog dialogFragment = new ManageDeckDialog();
-                dialogFragment.setOnResultListener(new ManageDeckDialog.ResultListener() {
-
-                    @Override
-                    public void DeckAdded(Deck deck) {
-                        deckAdapter.addItem(deck);
-
-                        recyclerView.setVisibility(View.VISIBLE);
-                        txtNoDeck.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void DeckUpdated(Deck deck) {
-                        deckAdapter.updateItem(deck);
-                    }
-
-                    @Override
-                    public void DeckDeleted(Deck deck) {
-                        deckAdapter.removeItem(deck);
-                    }
-                });
-                dialogFragment.show(getFragmentManager(), ADDDECK_TAG);
+                ManageDeckDialog dialogFragment = ManageDeckDialog.newInstance(ManageDeckDialog.Mode.ADD, null);
+                dialogFragment.setOnResultListener(mOnResultListener);
+                dialogFragment.show(getFragmentManager(), MANAGE_DECK_TAG);
             break;
         }
     }

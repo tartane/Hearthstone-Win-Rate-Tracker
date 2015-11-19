@@ -101,6 +101,9 @@ public class ManageDeckDialog extends DialogFragment {
         if(mMode == Mode.EDIT)
         {
             btnDelete.setVisibility(View.VISIBLE);
+            viewOverlay.setVisibility(View.GONE);
+            txtChooseHero.setVisibility(View.GONE);
+
             chosenHero = deckToEdit.getHeroClass();
             edtDeckName.setText(deckToEdit.getName());
             imgChooseClass.setImageResource(chosenHero.getIconId());

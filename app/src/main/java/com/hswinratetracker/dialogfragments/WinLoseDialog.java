@@ -72,6 +72,7 @@ public class WinLoseDialog extends DialogFragment implements View.OnClickListene
                 mOnResultListener.ResultSelected(deck, false);
                 break;
             case R.id.layEdit:
+                mOnResultListener.EditSelected(deck);
                 break;
         }
 
@@ -81,6 +82,7 @@ public class WinLoseDialog extends DialogFragment implements View.OnClickListene
 
     public interface ResultListener {
         void ResultSelected(Deck deck, boolean win);
+        void EditSelected(Deck deck);
     }
 
 
