@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.hswinratetracker.utilities.ToolbarUtils;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import hswinratetracker.com.hswinratetracker.R;
 
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         ToolbarUtils.updateToolbarHeight(this, toolbar);
     }
