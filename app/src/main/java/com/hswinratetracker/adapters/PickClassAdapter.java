@@ -47,14 +47,13 @@ public class PickClassAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.row_pickclass, null);
             holder = new ViewHolder();
             holder.txtClassName = (TextView) vi.findViewById(R.id.txtClassName);
-            holder.imgClassBanner = (CropImageView) vi.findViewById(R.id.imgClassBanner);
+            holder.imgClassBanner = (ImageView) vi.findViewById(R.id.imgClassBanner);
             vi.setTag(holder);
         } else {
             holder = (ViewHolder) vi.getTag();
         }
 
         holder.txtClassName.setText(heroClass.toString());
-        holder.imgClassBanner.setOffset(1, 0); //right crop
         holder.imgClassBanner.setImageResource(heroClass.getBannerId());
 
         return vi;
@@ -62,7 +61,7 @@ public class PickClassAdapter extends BaseAdapter {
 
     static class ViewHolder {
         TextView txtClassName;
-        CropImageView imgClassBanner;
+        ImageView imgClassBanner;
     }
 
     @Override

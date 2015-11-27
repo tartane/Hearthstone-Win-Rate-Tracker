@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HS Win Rate Tracker</string>
+    <string name="app_name">HS Win Tracker</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_deck">AddDeckActivity</string>
     <string name="no_deck">You don\'t have any deck yet. Press the button at the bottom to add your first deck!</string>

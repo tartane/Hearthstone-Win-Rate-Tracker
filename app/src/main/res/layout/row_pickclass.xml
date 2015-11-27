@@ -5,7 +5,7 @@
     android:background="#000"
     android:layout_height="120dp">
 
-    <com.hswinratetracker.CropImageView
+    <ImageView
         android:id="@+id/imgClassBanner"
         android:src="@drawable/ic_class_druid_banner"
         android:scaleType="centerCrop"
