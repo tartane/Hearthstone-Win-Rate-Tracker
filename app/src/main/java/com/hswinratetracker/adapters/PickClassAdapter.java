@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.hswinratetracker.CropImageView;
 import com.hswinratetracker.models.Deck;
+import com.ivankocijan.magicviews.views.MagicTextView;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,7 @@ public class PickClassAdapter extends BaseAdapter {
         if (convertView == null) {
             vi = inflater.inflate(R.layout.row_pickclass, null);
             holder = new ViewHolder();
-            holder.txtClassName = (TextView) vi.findViewById(R.id.txtClassName);
+            holder.txtClassName = (MagicTextView) vi.findViewById(R.id.txtClassName);
             holder.imgClassBanner = (ImageView) vi.findViewById(R.id.imgClassBanner);
             vi.setTag(holder);
         } else {
@@ -60,7 +61,7 @@ public class PickClassAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView txtClassName;
+        MagicTextView txtClassName;
         ImageView imgClassBanner;
     }
 

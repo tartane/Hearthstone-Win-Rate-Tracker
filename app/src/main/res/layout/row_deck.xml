@@ -45,8 +45,19 @@
                 tools:text="One shot druid" />
 
             <com.ivankocijan.magicviews.views.MagicTextView
-                android:id="@+id/txtWins"
+                android:id="@+id/txtWinlabel"
                 android:layout_marginLeft="15dp"
+                android:textColor="@color/white"
+                android:layout_marginRight="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtDeckName"
+                app:typeFace="OPTIBelwe-Medium.otf"
+                android:text="@string/wins_label" />
+
+            <com.ivankocijan.magicviews.views.MagicTextView
+                android:id="@+id/txtWins"
+                android:layout_toRightOf="@id/txtWinlabel"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,9 +66,20 @@
                 tools:text="15"/>
 
             <com.ivankocijan.magicviews.views.MagicTextView
-                android:id="@+id/txtLoses"
-                android:layout_marginLeft="10dp"
+                android:id="@+id/txtLoselabel"
+                android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@id/txtWins"
+                android:layout_marginRight="3dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtDeckName"
+                app:typeFace="OPTIBelwe-Medium.otf"
+                android:text="@string/loses_label" />
+
+            <com.ivankocijan.magicviews.views.MagicTextView
+                android:id="@+id/txtLoses"
+                android:layout_toRightOf="@id/txtLoselabel"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

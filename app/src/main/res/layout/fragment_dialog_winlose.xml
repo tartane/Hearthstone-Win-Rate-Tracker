@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/hearthstoneMain">
+        android:background="#c3000000">
 
         <com.ivankocijan.magicviews.views.MagicTextView
             android:id="@+id/txtDeckName"

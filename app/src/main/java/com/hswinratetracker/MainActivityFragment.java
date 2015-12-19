@@ -4,6 +4,9 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView;
@@ -26,13 +29,10 @@ import butterknife.ButterKnife;
 import hswinratetracker.com.hswinratetracker.R;
 
 
-public class MainActivityFragment extends Fragment implements View.OnClickListener {
+public class MainActivityFragment extends Fragment {
 
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-
-    @Bind(R.id.layAddDeck)
-    RelativeLayout layAddDeck;
 
     @Bind(R.id.txtNoDeck)
     MagicTextView txtNoDeck;
@@ -46,6 +46,12 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main, container, false);
@@ -55,7 +61,6 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        layAddDeck.setOnClickListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity()));
         SQLiteHelper db = new SQLiteHelper(getActivity());
@@ -93,6 +98,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         @Override
         public void DeckDeleted(Deck deck) {
             deckAdapter.removeItem(deck);
+
+            if(deckAdapter.getItemCount() <= 0)
+                txtNoDeck.setVisibility(View.VISIBLE);
         }
     };
     private DeckAdapter.OnItemClickListener mOnItemClickListener = new DeckAdapter.OnItemClickListener() {
@@ -130,16 +138,23 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
         }
     };
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
     @Override
-    public void onClick(View view) {
-        switch(view.getId())
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
         {
-            case R.id.layAddDeck:
+            case R.id.action_adddeck:
                 ManageDeckDialog dialogFragment = ManageDeckDialog.newInstance(ManageDeckDialog.Mode.ADD, null);
                 dialogFragment.setOnResultListener(mOnResultListener);
                 dialogFragment.show(getFragmentManager(), MANAGE_DECK_TAG);
-            break;
+                break;
         }
+        return true;
     }
+
 }

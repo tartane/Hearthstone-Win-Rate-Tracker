@@ -5,57 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivityFragment">
 
-    <ImageView
-        android:src="@drawable/cardback"
-        android:rotation="@integer/imageRotation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#d7000000"></View>
-
-    <RelativeLayout
-        android:id="@+id/layAddDeck"
-        android:layout_alignParentBottom="true"
-        android:clickable="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_green">
-
-        <RelativeLayout
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp">
-            <ImageView
-                android:id="@+id/imgAdd"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_add" />
-
-            <com.ivankocijan.magicviews.views.MagicTextView
-                android:id="@+id/txtEdit"
-                android:layout_toRightOf="@id/imgAdd"
-                android:layout_marginLeft="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                app:typeFace="OPTIBelwe-Medium.otf"
-                android:text="Add deck"/>
-        </RelativeLayout>
-
-
-    </RelativeLayout>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_above="@id/layAddDeck"
             android:focusable="true"
             android:focusableInTouchMode="false"
             android:scrollbars="vertical"
@@ -67,7 +18,7 @@
             android:padding="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:textSize="20sp"

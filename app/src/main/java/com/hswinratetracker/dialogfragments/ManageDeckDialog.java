@@ -86,7 +86,12 @@ public class ManageDeckDialog extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
-        builder.setTitle(getString(R.string.add_deck));
+        if(mMode == Mode.ADD) {
+            builder.setTitle(getString(R.string.add_deck));
+        }else
+        {
+            builder.setTitle(getString(R.string.edit_deck_title));
+        }
         builder.setCancelable(true);
 
         nbpWins.setMinValue(0);

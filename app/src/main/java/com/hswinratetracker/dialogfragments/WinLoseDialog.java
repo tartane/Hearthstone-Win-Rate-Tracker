@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.hswinratetracker.models.Deck;
 import butterknife.Bind;
@@ -25,6 +26,9 @@ public class WinLoseDialog extends DialogFragment implements View.OnClickListene
 
     @Bind(R.id.layEdit)
     RelativeLayout layEdit;
+
+    @Bind(R.id.txtDeckName)
+    TextView txtDeckName;
 
     final static private String DECK_KEY = "DECK";
     private Deck deck;
@@ -47,6 +51,7 @@ public class WinLoseDialog extends DialogFragment implements View.OnClickListene
         this.deck = getArguments().getParcelable(DECK_KEY);
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_dialog_winlose, null, false);
         ButterKnife.bind(this, view);
+        txtDeckName.setText(deck.getName());
         layWin.setOnClickListener(this);
         layLose.setOnClickListener(this);
         layEdit.setOnClickListener(this);

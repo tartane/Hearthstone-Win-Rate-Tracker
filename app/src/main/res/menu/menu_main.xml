@@ -7,11 +7,6 @@
         android:title="@string/add_deck"
         android:orderInCategory="100"
         android:icon="@drawable/ic_add"
-        app:showAsAction="withText" />
+        app:showAsAction="always" />
 
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="200"
-        app:showAsAction="never" />
 </menu>

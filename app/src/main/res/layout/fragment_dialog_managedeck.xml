@@ -1,132 +1,137 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.hswinratetracker.AddDeckActivityFragment">
-
+    android:layout_height="match_parent">
     <RelativeLayout
-        android:id="@+id/layAddDeck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-            <RelativeLayout
-                android:id="@+id/layChooseClass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imgChooseClass"
-                    android:src="@drawable/ic_class_paladin"
-                    android:scaleType="centerCrop"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp" />
-
-                <View
-                    android:id="@+id/overlay"
-                    android:background="#a5000000"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"></View>
-
-                <TextView
-                    android:id="@+id/txtChooseHero"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-                    android:gravity="center"
-                    android:text="Touch to\n choose hero"/>
-            </RelativeLayout>
-
-
-            <EditText
-                android:id="@+id/edtDeckName"
-                android:maxLength="25"
-                android:inputType="textNoSuggestions|textVisiblePassword"
-                android:layout_marginLeft="10dp"
-                android:hint="@string/deck_name"
-                android:imeOptions="actionDone"
-                android:singleLine="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/layChooseClass"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_below="@id/layChooseClass"
-                android:orientation="horizontal">
-
-                    <TextView
-                        android:text="@string/wins"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <NumberPicker
-                        android:id="@+id/numberPickerWins"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:text="@string/loses"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <NumberPicker
-                        android:id="@+id/numberPickerLoses"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-    </RelativeLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_below="@id/layAddDeck"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.hswinratetracker.AddDeckActivityFragment">
 
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_weight="1"
-            android:text="@string/save"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_green"
-            android:textColor="@color/white"
+        <RelativeLayout
+            android:id="@+id/layAddDeck"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_weight="1"
-            android:text="@string/delete"
-            android:layout_margin="5dp"
-            android:visibility="gone"
-            android:background="@drawable/button_red"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_weight="1"
-            android:text="@string/cancel"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_gray"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+            android:layout_height="wrap_content">
 
 
-</RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/layChooseClass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgChooseClass"
+                        android:src="@drawable/ic_class_paladin"
+                        android:scaleType="centerCrop"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp" />
+
+                    <View
+                        android:id="@+id/overlay"
+                        android:background="#a5000000"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"></View>
+
+                    <TextView
+                        android:id="@+id/txtChooseHero"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="Touch to\n choose hero"/>
+                </RelativeLayout>
+
+
+                <EditText
+                    android:id="@+id/edtDeckName"
+                    android:maxLength="25"
+                    android:inputType="textNoSuggestions|textVisiblePassword"
+                    android:layout_marginLeft="10dp"
+                    android:hint="@string/deck_name"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/layChooseClass"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@id/layChooseClass"
+                    android:orientation="horizontal">
+
+                        <TextView
+                            android:text="@string/wins"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <NumberPicker
+                            android:id="@+id/numberPickerWins"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="@string/loses"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <NumberPicker
+                            android:id="@+id/numberPickerLoses"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_below="@id/layAddDeck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_weight="1"
+                android:text="@string/save"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_green"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_weight="1"
+                android:text="@string/delete"
+                android:layout_margin="5dp"
+                android:visibility="gone"
+                android:background="@drawable/button_red"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_weight="1"
+                android:text="@string/cancel"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_gray"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>
